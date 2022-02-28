@@ -27,11 +27,11 @@ export default {
   setup() {
     const data = reactive({
       amount: "",
-      atmName:"ATM_A",
+      atmName: "ATM_A",
     });
     const router = useRouter();
     const submit = async () => {
-      await fetch("http://localhost:44352/api/account/withdraw", {
+      await fetch("https://tps-backendv1.herokuapp.com/api/account/withdraw", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
