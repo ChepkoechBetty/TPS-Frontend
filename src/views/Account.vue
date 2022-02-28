@@ -36,7 +36,7 @@ export default {
     onMounted(async () => {
       try {
         const response = await fetch(
-          "https://tps-backendv1.herokuapp.com/api/User/account",
+          "http://tps-backendv1.herokuapp.com/api/User/account",
           {
             headers: { "Content-Type": "application/json" },
             credentials: "include",
