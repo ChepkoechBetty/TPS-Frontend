@@ -30,7 +30,7 @@ export default {
     });
     const router = useRouter();
     const submit = async () => {
-      await fetch("http://localhost:44352/api/account/transfer", {
+      await fetch("http://tps-backendv1.herokuapp.com/api/account/transfer", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

@@ -42,7 +42,7 @@ export default {
     });
     const router = useRouter();
     const submit = async () => {
-      await fetch("http://localhost:44352/api/User/authenticate", {
+      await fetch("http://tps-backendv1.herokuapp.com/api/User/authenticate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
