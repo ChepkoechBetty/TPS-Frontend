@@ -30,7 +30,7 @@ export default {
     const auth = computed(() => store.state.authenticated);
 
     const logout = async () => {
-      await fetch("http://localhost:44352/api/User/logout", {
+      await fetch("https://tps-backendv1.herokuapp.com/api/User/logout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

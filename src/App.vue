@@ -1,10 +1,12 @@
 <template>
  <Nav/>
-<div class="card mb-3">
+ <div align="center">
+<div class="card mb-3" style="background:lightgrey;width: 36rem ;height:30rem">
   <main class="form-signin">
     <router-view />
   </main>
 </div>
+ </div>
 </template>
 <script lang="ts">
 import{defineComponent} from "vue";
