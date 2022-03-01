@@ -1,8 +1,8 @@
 <template>
   <div>
     <form @submit.prevent="submit">
-      <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-
+      <h1 class="h3 mb-3 fw-normal">Please login</h1>
+        <div class="text-danger my-2">{{ error }}</div> 
       <div class="form-floating">
         <input
           v-model="data.username"
@@ -10,6 +10,7 @@
           class="form-control"
           id="floatingInput"
           placeholder="name@example.com"
+          required
         />
         <label for="floatingInput">Username</label>
       </div>
@@ -20,18 +21,19 @@
           class="form-control"
           id="floatingPassword"
           placeholder="Password"
+          required
         />
         <label for="floatingPassword">Password</label>
       </div>
       <button class="w-100 btn btn-lg btn-primary" type="submit">
-        Sign in
+        Log in
       </button>
     </form>
   </div>
 </template>
 
 <script lang="ts">
-import { reactive } from "vue";
+import { reactive,ref } from "vue";
 import { useRouter } from "vue-router";
 export default {
   name: "LoginView",
@@ -40,19 +42,33 @@ export default {
       username: "",
       password: "",
     });
+    const error = ref("");
     const router = useRouter();
     const submit = async () => {
-      await fetch("http://tps-backendv1.herokuapp.com/api/User/authenticate", {
+      const usr = await fetch("http://localhost:44352/api/User/authenticate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
         body: JSON.stringify(data),
-      });
-      await router.push("/account");
+      })
+  .then(function (data) {
+    if(data.status!=200){
+    console.log('Invalid credentials', data);
+    error.value='Invalid credentials';
+    return false; 
+    }
+    console.log(data)
+    router.push("/account");
+  })
+  .catch(function (errorr) {
+    console.log('Request failed', errorr);
+  });
     };
     return {
       data,
       submit,
+      error,
+      
     };
   },
 };
