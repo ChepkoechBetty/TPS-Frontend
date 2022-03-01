@@ -1,7 +1,7 @@
 <template>
   <div>
     <form @submit.prevent="submit">
-      <h1 class="h3 mb-3 fw-normal">Transfer funds</h1>
+      <h1 class="h3 mb-3 fw-normal">Withdraw funds</h1>
      <div class="text-danger my-2">{{ error }}</div>
       <div class="form-floating">
         <input
@@ -14,7 +14,7 @@
         <label for="floatingInput">Enter Amount</label>
       </div>
       <button class="w-100 btn btn-lg btn-primary" type="submit">
-        Transfer
+        Withdraw
       </button>
       <router-link to="/account" class="nav-link">Back</router-link>
     </form>
